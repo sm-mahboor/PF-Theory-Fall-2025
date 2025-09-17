@@ -1,0 +1,58 @@
+START
+SET rank1Count = 0
+SET rank2Count = 0
+PRINT "Enter the ranks of your Poker Hand one by one"
+PRINT "Rank of Card 1: "
+INPUT card1
+PRINT "Rank of Card 2: "
+INPUT card2
+PRINT "Rank of Card 3: "
+INPUT card3
+PRINT "Rank of Card 4: "
+INPUT card4
+PRINT "Rank of Card 5: "
+INPUT card5
+SET rank1 = card1
+INCREMENT rank1Count
+IF card2 = rank1 THEN
+    INCREMENT rank1Count
+ELSE
+    SET rank2 = card2
+    INCREMENT rank2Count
+ENDIF
+IF card3 = rank1 THEN
+    INCREMENT rank1Count
+ELSE
+    IF rank2Count = 0 THEN
+        SET rank2 = card3
+        INCREMENT rank2Count
+    ELSE IF card3 = rank2 THEN
+        INCREMENT rank2Count
+    ENDIF
+ENDIF
+IF card4 = rank1 THEN
+    INCREMENT rank1Count
+ELSE
+    IF rank2Count = 0 THEN
+        SET rank2 = card4
+        INCREMENT rank2Count
+    ELSE IF card4 = rank2 THEN
+        INCREMENT rank2Count
+    ENDIF
+ENDIF
+IF card5 = rank1 THEN
+    INCREMENT rank1Count
+ELSE
+    IF rank2Count = 0 THEN
+        SET rank2 = card5
+        INCREMENT rank2Count
+    ELSE IF card5 = rank2 THEN
+        INCREMENT rank2Count
+    ENDIF
+ENDIF
+IF (rank1Count = 3 AND rank2Count = 3) OR (rank1Count = 2 AND rank2Count = 3) THEN
+    PRINT "This is a Poker Full Hand!"
+ELSE
+    PRINT "This is not a Poker Full Hand!"
+ENDIF
+END
